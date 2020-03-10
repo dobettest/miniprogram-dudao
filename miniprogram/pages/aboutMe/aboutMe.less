@@ -1,0 +1,123 @@
+.more i{
+    vertical-align: middle;
+    font-size: 60rpx;
+}
+.user_info {
+    display: flex;
+    height: 160rpx;
+    align-items: center;
+    // text-align: center;
+    border: 1rpx solid #ccc;
+
+    .head_img_wrap{
+        flex:2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        image{
+            width: 70%;
+        }
+    }
+
+    .user_info_wrap {
+        flex:8;
+        display: flex;
+        flex-direction: column;
+        .user_info_detail {
+            display: flex;
+            align-items: center;
+            .user_id_name {
+                flex:3;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .user_dep_job {
+                flex: 3;
+                display: flex;
+                flex-direction: column;
+                font-size: 24rpx;
+                color: gray;
+            }
+        }
+        .dj {
+            text-align: center;
+            vertical-align: middle;
+            i{
+                color:gold; 
+              }
+           
+
+
+        }
+    }
+
+}
+.other_info {
+    .other_info_item {
+        height: 100rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 0.5rpx solid #ccc;
+        .other_info_title {
+            flex: 5;
+            i{
+                margin: 10rpx;
+                font-size:60rpx;
+                color:red;
+                vertical-align: middle;
+            }
+
+        }
+    }
+}
+.logout{
+    height: 100rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:green;
+    color:white;
+}
+.login_frm{
+    margin-top: 30%;
+    input{
+        height: 100%;
+        width: 60%;
+        border: 1rpx solid #ccc;
+    }
+    form {
+      .username,.password,.op,.login_btn{
+          height: 90rpx;
+          display: flex;
+          justify-content: center;
+          align-items:center;
+          margin: 10rpx;
+      }
+      .login_btn{
+          height: 90rpx;
+          margin: 10rpx;
+          .btn{
+            width: 70%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: green;
+            color:white;
+            position: relative;
+            button{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width:100%;
+                height: 100%;
+                opacity: 0;
+            }
+          }
+       
+      }
+    }
+  }

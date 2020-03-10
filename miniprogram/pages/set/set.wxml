@@ -1,0 +1,14 @@
+<!--<view class="set" wx:for="{{options}}" wx:key="this">
+    <view class="set_item">
+    {{item}}
+    </view>
+</view>-->
+<view class="set">
+	<view wx:for="{{options}}" wx:key="this">
+		<view class="set_info_item">
+			
+			<view class="set_info_title"  bindtap="{{item.func}}"><image src="{{item.img_src}}" mode="widthFix"/>{{item.title}}</view>
+			<view class="more"><image src="{{item.opened?'../../images/dk.png':'../../images/gb.png'}}" mode="widthFix" bindtap="op" data-index="{{index}}"/></view>
+		</view>
+	</view>
+</view>

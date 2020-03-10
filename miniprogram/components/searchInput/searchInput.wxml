@@ -1,0 +1,12 @@
+<view class="container">
+	<view class="search"> 
+		<input type="text" name="search_content" bindinput="handleMatch" value="{{tempinput}}" />
+		<i class="iconfont iconsoushuo" bindtap="search_func" />
+	</view>
+	<view class="history_record" wx:if="{{matchArr}}">
+		<view class="record_list" wx:for="{{matchArr}}" wx:key="this">
+			<view class="list_item" bindtap="search_func" data-content="{{item}}">{{item}}</view>
+		</view>
+	</view>
+</view>
+

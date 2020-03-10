@@ -1,0 +1,21 @@
+<searchInput></searchInput>
+<tab tabs="{{tabs}}" bindhandleItemChange="handleItemChange"></tab>
+<view class="result_list">
+    <view class="list_item" wx:for="{{resultList}}" wx:key="fid" bindtap="handleDetail">
+        <view class="item_name">{{item.name}}</view>
+        <view class="result_info_detail">
+          <view class="item_id">
+            <text>任务号</text>:{{item._id}}
+          </view>
+          <view class="item_date">
+            <text>发布日期</text>:{{item.date}}
+          </view>
+        </view>
+      </view>
+  </view>
+  <view class="err" wx:if="{{err.img_src}}">
+    <view class="img_wrap">
+      <image src="{{err.img_src}}" />
+    </view>
+    <view class="title_wrap">{{err.title}}</view>
+  </view>

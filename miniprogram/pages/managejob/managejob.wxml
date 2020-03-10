@@ -1,0 +1,35 @@
+ <searchInput></searchInput>
+<tab tabs="{{tabs}}" bindhandleItemChange="handleItemChange"></tab>
+ <view class="task_list">
+      <view class="list_item"  wx:for="{{resultList}}" wx:key="fid">
+        <view class="item_select">
+          <checkbox-group bindchange="selectItem" data-index="{{index}}">
+            <checkbox checked="{{item.isSelect}}"></checkbox>
+          </checkbox-group>
+        </view>
+        <view class="task_info_wrap" bindtap="handleDetail">
+          <view class="item_name">{{item.name}}</view>
+          <view class="item_id">任务号:{{item._id}}</view>
+          <view class="item_date">发布日期:{{item.date}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="foot_tool_wrap" wx:if="{{resultList.length>0}}">
+      <view class="all_chk_wrap">
+        <checkbox-group bindchange="selectAll">
+          <checkbox checked="{{allSelect}}">全选</checkbox>
+        </checkbox-group>
+      </view>
+      <view class="del_oper" bindtap="updateTask" data-state="{{state[currentIndex]}}" data-op='0'>
+        否决
+      </view>
+      <view class="pass_oper" bindtap="updateTask" data-state="{{state[currentIndex]}}" data-op='1'>
+       通过
+      </view>
+    </view>
+  <view class="err" wx:if="{{err.img_src}}">
+    <view class="img_wrap">
+      <image src="{{err.img_src}}" />
+    </view>
+    <view class="title_wrap">{{err.title}}</view>
+  </view>

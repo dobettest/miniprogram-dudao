@@ -1,0 +1,79 @@
+.task_list {
+  border-top: 1rpx solid #ccc;
+  padding-bottom: 90rpx;
+}
+.task_list .list_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  border-bottom: 1rpx solid #ccc;
+  padding: 10rpx;
+}
+.task_list .list_item .item_select {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.task_list .list_item .task_info_wrap {
+  flex: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.task_list .list_item .task_info_wrap .item_name {
+  font-size: 34rpx;
+  font-weight: 600;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.task_list .list_item .task_info_wrap .item_id {
+  color: red;
+}
+.task_list .list_item .task_info_wrap .item_date {
+  color: #666;
+}
+.foot_tool_wrap {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 90rpx;
+  width: 100%;
+  display: flex;
+  background-color: #fff;
+  border-top: 1rpx solid #ccc;
+}
+.foot_tool_wrap .all_chk_wrap {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.foot_tool_wrap .del_oper {
+  flex: 3;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.foot_tool_wrap .pass_oper {
+  flex: 3;
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.err .title_wrap {
+  text-align: center;
+}

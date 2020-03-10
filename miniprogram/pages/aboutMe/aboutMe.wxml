@@ -1,0 +1,76 @@
+<view class="login" wx:if="{{userInfo._id}}">
+	<view class="user_info">
+		<view class="head_img_wrap">
+			<image src="{{userInfo.header?userInfo.header:'../../images/logo.png'}}" mode="widthFix" bindlongpress="changeHeader"/>
+		</view>
+		<view class="user_info_wrap">
+			<view class="user_info_detail">
+				<view class="user_id_name">
+					<view>{{userInfo.name?userInfo.name:'张三'}}</view>
+					<view>{{userInfo.user_id?userInfo.user_id:'000000000000'}}</view>
+				</view>
+				<view class="user_dep_job">
+					<view>部门:{{userInfo.department?userInfo.department:'软件学院'}}</view>
+					<view>职位:{{userInfo.job?userInfo.job:'游客'}}</view>
+				</view>
+				<view class="more">
+					<i class="iconfont icongengduo" />
+				</view>
+			</view>
+			<view class="dj">
+				<text>等级:</text>
+				<block wx:for="{{userInfo.dj/5-1}}" wx:key="this">
+					<i class="iconfont icontaiyang" />
+				</block>
+				<block wx:for="{{userInfo.dj%5?userInfo.dj%5:1}}" wx:key="this">
+					<i class="iconfont iconstart1" />
+				</block>
+			</view>
+		</view>
+	</view>
+	<view class="other_info">
+		<view
+		 class="other_info_item"
+		 bindtap="{{item.func}}"
+		 wx:for="{{otherInfoList}}"
+		 wx:key="this"
+		>
+			<view class="other_info_title">
+				<!-- <image src="{{item.img_src}}" mode="widthFix" /> -->
+				<i class="iconfont {{item.css}}" style="color:{{item.color}}" />
+				{{item.title}}
+			</view>
+			<view class="more">
+				<i class="iconfont icongengduo" />
+			</view>
+		</view>
+	</view>
+	<view class="logout" bindtap="logout">注销</view>
+</view>
+<view class="login_frm" wx:else>
+	<form bindsubmit="login">
+		<view class="username">账号:
+			<input type="text" name="user_id" />
+		</view>
+		<view class="password">密码:
+			<input type="text" name="password" />
+		</view>
+		<view class="op">
+			<radio-group name="sf">
+				<radio value="0" checked>
+					普通用户
+				</radio>
+				<radio value="1">
+					管理员
+				</radio>
+			</radio-group>
+		</view>
+		<view class="login_btn">
+			<view class="btn">
+				登录
+				<button formType="submit" type="primary" />
+			</view>
+		</view>
+	</form>
+</view>
+

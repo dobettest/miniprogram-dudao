@@ -1,0 +1,30 @@
+@import "../../style/iconfont";
+.container {
+  position: relative;
+}
+.container .search {
+  display: flex;
+  height: 90rpx;
+  align-items: center;
+  border: 1rpx solid #ccc;
+}
+.container .search input {
+  flex: 13;
+  display: block;
+  height: 100%;
+}
+.container .search i {
+  flex:1;
+  font-size: 60rpx;
+}
+.container .history_record {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 90rpx;
+  z-index: 1000;
+  background-color: #fff;
+}
+.container .history_record .record_list .list_item {
+  border-bottom: 1rpx solid #ccc;
+}

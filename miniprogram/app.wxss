@@ -1,0 +1,23 @@
+/* 在微信小程序中不支持通配符'*' */
+@import './style/iconfont.wxss';
+page,view,text,swiper,open-data,swiper-item,image,navigator,textarea,input{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+/* 主题颜色通过变量来实现
+原生css和less也是支持变量 */
+page{
+    --themeColor:#eb4450;
+    /* 定义统一字体大小，假定默认设计稿是375px
+    1px=2rpx;
+    14px=28rpx; */
+    font-size: 28rpx;
+    /* background-image:url('https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2961485763,3906083168&fm=26&gp=0.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+image
+{
+    width: 100%;
+}

@@ -1,0 +1,20 @@
+.more image {
+  vertical-align: middle;
+  width: 90rpx;
+}
+.set .set_info_item {
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 0.5rpx solid #ccc;
+}
+.set .set_info_item .set_info_title {
+  flex: 5;
+}
+.set .set_info_item .set_info_title image {
+  flex: 1;
+  width: 60rpx;
+  vertical-align: middle;
+  margin: 15rpx;
+}

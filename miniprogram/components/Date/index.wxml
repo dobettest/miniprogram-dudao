@@ -1,0 +1,12 @@
+<view class="Date">
+	<view class="topTool">
+		<i class="iconfont iconshangyige" bindtap="preMonth" />
+		{{MyDate.year}}-{{MyDate.month}}
+		<i class="iconfont iconxiayige" bindtap="nextMonth" />
+	</view>
+	<view class="body">
+        <view class="item" wx:for="{{weekBar}}" wx:key="this" style="background-color:{{bgc}};">{{item.name}}</view>
+		<view class="item {{MyDate.today==index+1?'.today':''}}" wx:for="{{MyDate.monthLength}}" wx:key="this" style="background-color:{{bgc}}">{{index+1}}</view>
+	</view>
+</view>
+

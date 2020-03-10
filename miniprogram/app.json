@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/addTask/addTask",
+    "pages/tasklist/tasklist",
+    "pages/result/result",
+    "pages/task_detail/task_detail",
+    "pages/aboutMe/aboutMe",
+    "pages/error/error",
+    "pages/set/set",
+    "pages/test/index",
+    "pages/set_detail/set_detail",
+    "pages/managejob/managejob",
+    "pages/publish/publish",
+    "pages/activityList/activityList"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云督",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/home2.png",
+        "selectedIconPath": "images/home3.png"
+      },
+      {
+        "pagePath": "pages/aboutMe/aboutMe",
+        "text": "我的",
+        "iconPath": "images/me3.png",
+        "selectedIconPath": "images/me4.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

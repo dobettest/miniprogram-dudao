@@ -1,0 +1,32 @@
+<form bindsubmit="publish">
+	<view class="callBack_title">
+		<view>任务名:</view>
+		<input type="text" name="title" bindinput="searchR" value="{{tempinput}}" />
+		<view class="relative" wx:for="relativeArr">
+			<view class="r_item" bindtap="setName">{{item.name}}</view>
+		</view>
+	</view>
+	<view class="callBack_content_title">
+		<view>{{title[type]}}:</view>
+		<textarea
+		 name="bz"
+		 id=""
+		 cols="30"
+		 rows="10"
+		/>
+		</view>
+	<view class="addFile" wx:if="{{type>0}}">
+		<view>附件:</view>
+		<view class="add">
+			<image src="../../images/more.png" bindtap="addFiles"/>
+		</view>
+	</view>
+  <view class="file_item" wx:for="{{tempFiles}}" wx:key="fid">
+      {{item.name}}
+			<i class="iconfont iconchushaixuanxiang" bindtap="removeFile" data-k="{{item.name}}"/>
+  </view>
+	<view class="callBack_btn">
+		<button type="primary" data-type="{{type}}" formType="submit">{{btn[type]}}</button>
+	</view>
+</form>
+

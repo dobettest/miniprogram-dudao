@@ -1,0 +1,96 @@
+.task_list {
+    border-top: 1rpx solid #ccc;
+    padding-bottom: 90rpx;
+    .list_item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        border-bottom: 1rpx solid #ccc;
+        padding: 10rpx;
+        .item_select {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .task_info_wrap {
+            flex: 6;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+            .item_name {
+                font-size: 34rpx;
+                font-weight: 600;
+                display: -webkit-box;
+                overflow: hidden;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+
+            }
+            .item_id {
+                color: red;
+
+            }
+
+            .item_date {
+                color: #666;
+
+            }
+        }
+    }
+}
+.foot_tool_wrap {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 90rpx;
+    width: 100%;
+    display: flex;
+    background-color: #fff;
+    border-top: 1rpx solid #ccc;
+
+    .all_chk_wrap {
+        flex: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .del_oper {
+        flex:3;
+        background-color:red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 32rpx;
+        font-weight: 600;
+
+    }
+    .pass_oper {
+        flex:3;
+        background-color: green;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 32rpx;
+        font-weight: 600;
+
+    }
+}
+
+.err {
+    .img_wrap {
+        image {}
+    }
+
+    .title_wrap {
+        text-align: center;
+
+    }
+}

@@ -1,0 +1,13 @@
+.active {
+  color: #eb4450;
+  border-bottom: 5rpx solid currentColor;
+}
+.tab {
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+}
+.tab .tab_item {
+  flex: 1;
+  padding: 15rpx 0;
+}

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "searchInput": "../../components/searchInput/searchInput",
+    "tab": "../../components/tab/tab"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "navigationBarTitleText": "任务管理"
+}
