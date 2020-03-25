@@ -1,14 +1,7 @@
 //app.js
 App(
   {
-    globalData:
-    {
-      userInfo:{
-
-      }
-    },
   onLaunch: function () {
-    this.globalData.userInfo=wx.getStorageSync('userinfo');
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -21,6 +14,21 @@ App(
         traceUser: true,
       })
     };
-    
-  }
+    const { model, system, statusBarHeight } = wx.getSystemInfoSync()
+    let headHeight
+    if (/iphone\s{0,}x/i.test(model)) {
+      headHeight = 88
+    } else if (system.indexOf('Android') !== -1) {
+      headHeight = 68
+    } else {
+      headHeight = 64
+    }
+    this.globalData.headerHeight = headHeight
+    this.globalData.statusBarHeight = statusBarHeight
+  },
+    globalData: {
+      headerHeight: 0,
+      statusBarHeight: 0,
+    },
+
 })

@@ -1,3 +1,6 @@
+page{
+      background-color:#F4F4F4;
+}
 .index_banner swiper{
   width:750rpx;
   height:274rpx;
@@ -6,6 +9,8 @@
   width: 100%;
 }
 .nav{
+  margin:20rpx 0rpx;
+  background-color:white;
   display:flex;
   flex-wrap: wrap;
   text-align: center;
@@ -13,37 +18,22 @@
   border: 0.5px solid #ccc;
 }
 .nav_item{
+  margin-top:15rpx;
   height:90rpx;
   width: 25%;
   margin-bottom:20px;
   border-radius:50%;
+  font-size:24rpx;
 }
 .nav_item i{
   font-size: 90rpx;
   color:red;
 }
-.more
-{
-  margin-top:10rpx;
-  height:60rpx;
-}
-.more image
-{
-  margin-left:10rpx;
-  vertical-align:middle;
-  height:50rpx;
-  width:60rpx;
-}
-.more text
-{
-  vertical-align:middle;
-  display: inline-block;
-  color:red;
-}
 .notations
 {
+  margin-top:20rpx;
+  background-color:white;
   border: 0.5rpx solid #ccc;
-  border-top:none;
   height:60rpx;
 }
 .notations image
@@ -58,16 +48,27 @@
   color: red;
 }
 .honorBar {
-  margin-top: 10rpx;
+  background-color:white;
  display: flex;
  justify-content: space-between;
   text-align: center;
   border:0.5rpx solid #ccc;
 }
 .title{
-  font-style: 32rpx;
+  background-color:white;
+  margin-top:20rpx;
+  font-size:24rpx;
   font-weight: 600;
+  color:#9B9B9B;
+  middle-align:vertical;
+}
+.title_name{
+  font-size:30rpx;
   color:red;
+}
+.more{
+  text-align:center;
+  float:right;
 }
 .honor_item{
   width: 23%;
@@ -78,9 +79,10 @@
 }
 .honor_item image{
   border: 1rpx solid #000;
- height: 240rpx;
+  height: 240rpx;
 }
 .news_item{
+  background-color:white;
   display: flex;
   align-items: center;
 }

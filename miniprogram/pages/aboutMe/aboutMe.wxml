@@ -13,9 +13,9 @@
 					<view>部门:{{userInfo.department?userInfo.department:'软件学院'}}</view>
 					<view>职位:{{userInfo.job?userInfo.job:'游客'}}</view>
 				</view>
-				<view class="more">
-					<i class="iconfont icongengduo" />
-				</view>
+			</view>
+				<view class="sign_text">
+				<text>个性签名:{{userInfo.sign_text?userInfo.sign_text:"这个人个性到没什么签名"}}</text>
 			</view>
 			<view class="dj">
 				<text>等级:</text>
@@ -26,6 +26,9 @@
 					<i class="iconfont iconstart1" />
 				</block>
 			</view>
+		</view>
+		<view class="more">
+			<i class="iconfont icongengduo" />
 		</view>
 	</view>
 	<view class="other_info">

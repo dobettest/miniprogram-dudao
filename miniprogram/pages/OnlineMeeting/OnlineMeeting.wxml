@@ -1,0 +1,8 @@
+<view class=".container">
+<view class='guide-box'>
+    <view class="single-box" wx:for="{{entryInfos}}" wx:key="*this" id="{{index}}" bindtap='handleEntry'>
+      <image class="icon" mode="aspectFit" src="{{item.icon}}" role="img"></image>
+      <view class="label">{{item.title}}</view>
+    </view>
+</view>
+</view>

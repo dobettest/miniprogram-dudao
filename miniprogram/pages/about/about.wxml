@@ -1,0 +1,11 @@
+<view class="about">
+    <view class="about_text">我们是以政务为主体、服务为主线，全省统一架构、五级联动的新型电子政务平台。其中，省、市、县(市、区)政府部门设服务窗口, 乡镇(街道)、村(社区)设服务站点,为社会公众提供综合性、一站式的在线服务，因此被喻为“政务淘宝”。\n“服务零距离,办事一站通”，是我们的主旨。\n“伴你一生大小事“，是我们的期待。\n那么，我们能为你做些什么呢?</view>
+    <view class="about_img"><image src="../../images/about_img.png" mode="widthFix"/></view>
+    <view class="about_info">
+    <view class="info_item" wx:for="{{infos}}" wx:key="this">
+    <i class="iconfont {{item.sty}}"></i>
+    <view class="item_title">{{item.title}}</view> 
+    <view class="item_contact">{{item.contact}}</view>
+    </view>
+    </view>
+</view>

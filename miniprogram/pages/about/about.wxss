@@ -1,0 +1,31 @@
+page {
+  background-color: #F4F4F4;
+}
+.about .about_text {
+  padding: 20rpx;
+  font-size: 28rpx;
+  text-align: left;
+  background-color: #fff;
+}
+.about .about_img {
+  margin-top: 20rpx;
+}
+.about .about_info {
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+.about .about_info .info_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.about .about_info .info_item i {
+  font-size: 60rpx;
+  color: red;
+}
+.about .about_info .info_item .item_title {
+  font-size: 28rpx;
+  text-align: center;
+  color: gray;
+}

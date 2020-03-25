@@ -2,7 +2,6 @@
 import {
   cloudFunc
 } from "../../utils/Func"
-var app=getApp()
 Page({
   /**
    * 页面的初始数据
@@ -28,10 +27,10 @@ Page({
       title: '审核中',
       isActive: false
     },
-      {
-        title: '已完成',
-        isActive: false
-      }
+    {
+      title: '已完成',
+      isActive: false
+    }
     ]
   },
 
@@ -43,12 +42,12 @@ Page({
       resultList,
       currentIndex
     } = this.data
-    var app = getApp();
+    let userInfo = wx.getStorageSync("userinfo");
     this.setData({
-      userInfo: app.globalData.userInfo,
       resultList,
       err: {}
     })
+    this.data.userInfo = userInfo
     this.getResult()
 
   },
@@ -126,47 +125,47 @@ Page({
       allSelect,
       userInfo
     } = this.data;
-    await cloudFunc('queryActivity',userInfo.sf>0?{
-        data: {
-          state: currentIndex
-        },
-        num: currentPage * 7,
-        limit: 7
+    await cloudFunc('queryActivity', userInfo.sf > 0 ? {
+      data: {
+        state: currentIndex
+      },
+      num: currentPage * 7,
+      limit: 7
     } : {
         data: {
-          dep_id:userInfo.dep_id,
+          dep_id: userInfo.dep_id,
           state: currentIndex
         },
         num: currentPage * 7,
         limit: 7
       }).then(result => {
-      result.data.forEach(v => v.isSelect = allSelect);
-      this.setData({
-        resultList: [...resultList, ...result.data],
-        totalPage: Math.ceil(result.totalnum.total /7),
-      })
-      if (result.data.length == 0 && currentPage == 0) {
-        allSelect = false
+        result.data.forEach(v => v.isSelect = allSelect);
+        this.setData({
+          resultList: [...resultList, ...result.data],
+          totalPage: Math.ceil(result.totalnum.total / 7),
+        })
+        if (result.data.length == 0 && currentPage == 0) {
+          allSelect = false
+          let err = {
+            img_src: '../../images/error.png',
+            title: "没有找到结果"
+          }
+          that.setData({
+            err,
+            allSelect
+          })
+        }
+        wx.stopPullDownRefresh()
+      }).catch(error => {
         let err = {
           img_src: '../../images/error.png',
-          title: "没有找到结果"
+          title: "访问出错了"
         }
         that.setData({
-          err,
-          allSelect
+          err
         })
-      }
-      wx.stopPullDownRefresh()
-    }).catch(error => {
-      let err = {
-        img_src: '../../images/error.png',
-        title: "访问出错了"
-      }
-      that.setData({
-        err
+        console.log(error)
       })
-      console.log(error)
-    })
   },
   handleDetail() {
     wx.navigateTo({

@@ -1,0 +1,4 @@
+{
+  "usingComponents": {"trtc-room": "/components/trtc-room/trtc-room"},
+  "navigationBarTitleText":"在线会议"
+}

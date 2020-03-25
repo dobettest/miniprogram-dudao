@@ -2,6 +2,7 @@
 import {
   cloudFunc, uploadFile, chooseImage, showToast
 } from "../../utils/Func"
+import regeneratorRuntime from '../../lib/runtime/runtime'
 Page({
 
   /**
@@ -9,7 +10,6 @@ Page({
    */
   data: {
     userInfo: {},
-    num: 0,
     otherInfoList: [{
       //img_src:"../../images/sc.png",
       css: 'iconshoucang',
@@ -29,7 +29,7 @@ Page({
       css: 'iconricheng',
       color: '#408ED6',
       title: '日程安排',
-      func: 'rc'
+      func: 'richeng'
     },
     {
       //img_src:"../../images/fk.png",
@@ -72,6 +72,12 @@ Page({
       url: '../publish/publish?type=0',
     });
 
+  },
+  richeng()
+  {
+    wx.navigateTo({
+      url: '../richeng/index',
+    })
   },
   sz() {
     wx.navigateTo({
@@ -125,5 +131,10 @@ Page({
       console.log(res);
       this.setData({userInfo})
     })
+  },
+  about(){
+    wx.navigateTo({
+      url: '../about/about'
+  })
   }
 })

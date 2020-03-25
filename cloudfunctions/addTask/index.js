@@ -10,7 +10,7 @@ exports.main = async (event, context) => {
       if (res.data.length> 0)
        return null;
     else
-        return db.collection('task').add({ data: { name: event.title, state: event.state, user_id: event.uid, date: db.serverDate(), bz: event.bz, fid: event.fid || []} })
+        return db.collection('task').add({ data: { name: event.title, state: event.state, user_id: event.uid, date: db.serverDate(), bz: event.bz, fid: event.fid || [],dep_id:event.dep_id} })
   } catch (e) {
     console.error(e)
   }

@@ -8,11 +8,17 @@
     "pages/aboutMe/aboutMe",
     "pages/error/error",
     "pages/set/set",
-    "pages/test/index",
+    "pages/about/about",
+    "pages/richeng/index",
     "pages/set_detail/set_detail",
     "pages/managejob/managejob",
     "pages/publish/publish",
-    "pages/activityList/activityList"
+    "pages/activityList/activityList",
+    "pages/MyCharts/MyCharts",
+    "pages/OnlineMeeting/OnlineMeeting",
+    "pages/room/room",
+    "pages/meeting/meeting",
+    "pages/videocall/videocall"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

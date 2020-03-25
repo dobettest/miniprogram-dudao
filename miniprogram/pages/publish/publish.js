@@ -33,20 +33,6 @@ Page({
       title: this.data.btn[type],
     })
   },
-  async searchR(e) {
-    console.log(e)
-    if (e.detail.value.length > 0) {
-      let {relativeArr}=this.data;
-      let result = await cloudFunc('search', { name: e.detail.value, user_id: userInfo.user_id })
-      relativeArr=result.data;
-      this.setData({relativeArr})
-    } else {
-      this.setData({
-        tempinput: '',
-        matchArr: []
-      })
-    }
-},
   publish(e) {
     console.log(e)
     let { type } = e.detail.target.dataset;
@@ -77,13 +63,14 @@ Page({
                   title: '任务已存在',
                   icon: 'none'
                 })
-              else
+              else {
                 wx.showToast({
                   title: '任务发布成功',
                 })
-              wx.navigateBack({
-                delta: 1
-              });
+                wx.navigateBack({
+                  delta: 1
+                });
+              }
             }).catch(err => {
               console.log(err)
             })
@@ -99,16 +86,17 @@ Page({
             cloudFunc("addActivity", { title, fid, dep_id: userInfo.dep_id }).then(result => {
               if (result == null)
                 wx.showToast({
-                  title: '任务已存在',
+                  title: '活动已存在',
                   icon: 'none'
                 })
-              else
+              else {
                 wx.showToast({
-                  title: '任务发布成功',
+                  title: '活动发布成功',
                 })
-              wx.navigateBack({
-                delta: 1
-              });
+                wx.navigateBack({
+                  delta: 1
+                });
+              }
             }).catch(err => {
               console.log(err)
             })

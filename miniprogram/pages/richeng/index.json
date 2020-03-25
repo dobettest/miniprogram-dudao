@@ -1,0 +1,6 @@
+{
+"usingComponents": {
+  "Date":"../../components/Date/index"
+},
+"navigationBarTitleText":"日程安排"
+}

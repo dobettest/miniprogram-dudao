@@ -1,6 +1,6 @@
 /* 在微信小程序中不支持通配符'*' */
 @import './style/iconfont.wxss';
-page,view,text,swiper,open-data,swiper-item,image,navigator,textarea,input{
+page,view,text,swiper,open-data,swiper-item,image,navigator,textarea,input,span{
     margin: 0;
     padding: 0;
     box-sizing:border-box;

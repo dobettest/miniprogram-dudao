@@ -4,7 +4,7 @@
 }
 .user_info {
   display: flex;
-  height: 160rpx;
+  height: 180rpx;
   align-items: center;
   border: 1rpx solid #ccc;
 }
@@ -45,6 +45,16 @@
 }
 .user_info .user_info_wrap .dj i {
   color: gold;
+}
+.user_info .user_info_wrap .sign_text {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 24rpx;
+  color: gray;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 .other_info .other_info_item {
   height: 100rpx;

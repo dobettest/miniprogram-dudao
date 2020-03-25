@@ -18,9 +18,7 @@ Component({
   attached: function () {
     // 在组件实例进入页面节点树时执行
     let history = wx.getStorageSync("history");
-    this.setData({
-      history
-    })
+    this.data.history=history
   },
   detached: function () {
 
@@ -53,9 +51,7 @@ Component({
       console.log(this.data.tempinput)
       let history = this.data.history || [];
       history.some(v => v === this.data.tempinput) ? console.log("存在") : history.push(this.data.tempinput)
-      this.setData({
-        history
-      })
+     this.data.history=history
       console.log([...this.data.history])
     },
     search_func(e) {

@@ -1,0 +1,51 @@
+.result_list {
+    border-top: 1rpx solid #ccc;
+    .list_item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1rpx solid #ccc;
+      .item_name {
+        flex:3;
+        margin: 10rpx;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+      .result_info_detail {
+        flex:4;
+        display: flex;
+        flex-direction: column;
+        .item_id {
+          text {
+            color: red;
+          }
+          word-break:break-all;
+          display: -webkit-box;
+          overflow: hidden;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp:2;
+  
+        }
+  
+        .item_date {
+          text {
+            color: red;
+          }
+  
+        }
+      }
+    }
+  }
+  
+  .err {
+    .img_wrap {
+      image {}
+    }
+  
+    .title_wrap {
+      text-align: center;
+  
+    }
+  }

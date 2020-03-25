@@ -199,5 +199,12 @@ Page({
       url: '../contact/contact?fname=' + e.currentTarget.dataset.fname,
     })
 
+  },
+  setClipboardData(e)
+  {
+    console.log(e)
+    let {name}=e.currentTarget.dataset;
+    wx.setClipboardData({data: name});
+
   }
 })

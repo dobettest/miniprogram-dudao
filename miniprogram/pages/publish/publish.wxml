@@ -1,10 +1,7 @@
 <form bindsubmit="publish">
 	<view class="callBack_title">
 		<view>任务名:</view>
-		<input type="text" name="title" bindinput="searchR" value="{{tempinput}}" />
-		<view class="relative" wx:for="relativeArr">
-			<view class="r_item" bindtap="setName">{{item.name}}</view>
-		</view>
+		<input type="text" name="title"/>
 	</view>
 	<view class="callBack_content_title">
 		<view>{{title[type]}}:</view>

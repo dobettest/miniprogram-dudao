@@ -10,9 +10,9 @@
 </view>
 <view class="nav">
   <view class="nav_item" wx:for="{{userInfo.sf?nav:nav1}}" wx:key="this">
-  <navigator url="{{item.src}}{{item.data}}">
-    <i class="iconfont {{item.icf}}"></i>
-    <view>{{item.txt}}</view>
+    <navigator url="{{item.src}}{{item.data}}">
+      <i class="iconfont {{item.icf}}"></i>
+      <view>{{item.txt}}</view>
     </navigator>
   </view>
 </view>
@@ -20,19 +20,17 @@
   <image src="../../images/notation.png" style="margin-left:{{left}}rpx" />
   <text>已更新{{num}}条通知</text>
 </view>
-<view class="title">群星闪耀</view>
+<view class="title"><span class="title_name">群星闪耀</span><span class="more">查看更多<i class="iconfont icongengduo"></i></span></view>
 <view class="honorBar">
-<block wx:for="{{honorList}}" wx:key="this">
-  <view class="honor_item">
-    <view class="honor_title">{{item.type}}</view>
-    <view class="honor_img_wrap">
+  <block wx:for="{{honorList}}" wx:key="this">
+    <view class="honor_item">
+      <view class="honor_title">{{item.type}}</view>
       <image src="{{item.img_src?item.img_src:'../../images/none-data.png'}}"></image>
+      <view class="honor_name">{{item.name}}</view>
     </view>
-    <view class="honor_name">{{item.name}}</view>  
-  </view>
   </block>
 </view>
-<view class="title">校园新闻</view>
+<view class="title"><span class="title_name">校园新闻</span><span class="more">查看更多<i class="iconfont icongengduo"></i></span></view>
 <view class="news">
   <view class="news_item" wx:for="{{newsList}}" wx:key="this">
     <i class="iconfont icongengduo"></i>
@@ -40,4 +38,3 @@
     <view class="news_time">{{item.time}}</view>
   </view>
 </view>
-  
