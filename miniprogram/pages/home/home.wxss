@@ -8,8 +8,12 @@ page{
 .index_banner swiper image{
   width: 100%;
 }
-.nav{
+.nav swiper{
   margin:20rpx 0rpx;
+  height:370rpx;
+}
+.nav swiper-item{
+  height:100%;
   background-color:white;
   display:flex;
   flex-wrap: wrap;
@@ -18,8 +22,8 @@ page{
   border: 0.5px solid #ccc;
 }
 .nav_item{
-  margin-top:15rpx;
-  height:90rpx;
+  padding:20rpx;
+  height:140rpx;
   width: 25%;
   margin-bottom:20px;
   border-radius:50%;

@@ -56,9 +56,10 @@ export const uploadFile = (cloudPath, filePath) => {
   )
 }
 export const removeFile = (fileList) => {
+  console.log(fileList)
   return new Promise((resolve, reject) => {
     wx.cloud.deleteFile({
-      fileList,
+      fileList:fileList.fid,
       success: res => {
         resolve(res)
       },

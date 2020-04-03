@@ -13,7 +13,7 @@ Page({
     num: 15,
     interval: '',
     banner: [],
-    nav: [
+    nav: [[
       {
         icf: 'iconiconfontactivityadd',
         txt: '发布活动',
@@ -42,6 +42,12 @@ Page({
         data: 'type=1'
       },
       {
+        icf: 'iconcui',
+        txt: '催办任务',
+        src: '../addTask/addTask?',
+        data: 'type=1'
+      },
+      {
         icf: 'icontongjifenxi',
         txt: '统计分析',
         src: '../MyCharts/MyCharts',
@@ -55,8 +61,29 @@ Page({
         data: ''
 
       }
+    ],[
+      {
+        icf: 'iconhuodongguanli',
+        txt: '活动管理',
+        src: '../OnlineMeeting/OnlineMeeting',
+        data: ''
+
+      }
+    ]
     ],
     nav1: [
+      {
+        icf: 'iconiconfontactivityadd',
+        txt: '申办活动',
+        src: '../publish/publish?',
+        data: 'type=0'
+      },
+      {
+        icf: 'iconshenqing',
+        txt: '申请任务',
+        src: '../addTask/addTask?',
+        data: 'type=0'
+      },
       {
         icf: 'iconrenwuzhongxin',
         txt: '任务列表',
@@ -72,13 +99,21 @@ Page({
         txt: '任务审核',
         src: '../publish/publish?',
         data: 'type=1'
+      }
+      ,
+      {
+        icf: 'icontongjifenxi',
+        txt: '统计分析',
+        src: '../MyCharts/MyCharts',
+        data: ''
 
       },
       {
-        icf: 'iconshenqing',
-        txt: '申请任务',
-        src: '../addTask/addTask?',
-        data: 'type=0'
+        icf: 'iconhuiyishi',
+        txt: '在线会议',
+        src: '../OnlineMeeting/OnlineMeeting',
+        data: ''
+
       }
     ],
     honorList: [
@@ -114,8 +149,8 @@ Page({
    */
   onLoad: function (options) {
     //console.log()
-    this.getBanner();
-    this.getNewsList()
+     this.getBanner();
+     this.getNewsList()
 
   },
   onHide: function () {

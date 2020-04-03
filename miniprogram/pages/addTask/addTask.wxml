@@ -1,18 +1,18 @@
 <form bindsubmit="publish">
 <view class="callBack_title">
 <view>任务名:</view>
-<input type="text" name="title" />
+<input type="text" name="title" placeholder="推荐使用活动名+id作为名称"/>
 </view>
 <view class="callBack_content_title">
-<view>{{title[type]}}:</view>
+<view>备注:</view>
 <textarea name="bz" id="" cols="30" rows="10">
 </textarea>
 </view>
-<view  hidden="{{type==0?'hidden':''}}">
+<view wx:if="{{userInfo.sf>0}}">
 指派编号:
 <input type="text" name="uid" />
 </view>
 <view class="callBack_btn">
-<button type="primary" data-type="{{type}}" formType="submit">{{btn[type]}}</button>
+<button type="primary" data-type="{{type}}" formType="submit">{{userInfo.sf>0?'分派任务':'申请任务'}}</button>
 </view>
 </form>

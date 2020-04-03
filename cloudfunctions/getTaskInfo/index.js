@@ -5,11 +5,16 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  let result=await db.collection('task').where({user_id:event.user_id}).get()||{}
+  let result=await db.collection('task').where(event.data).get()||{}
     let state0 = result.data.filter(v => v.state == 0).length
     let state1 = result.data.filter(v => v.state == 1).length
     let state2 = result.data.filter(v => v.state == 2).length
     let state3 = result.data.filter(v => v.state == 3).length
-    let res = [state0, state1, state2, state3]
-    return res;
+  let res = [
+    { value:state0, name: '待批准' },
+    { value:state1, name: '已批准' },
+    { value:state2, name: '审核中' },
+    { value:state3, name: '已完成' },
+  ]
+  return res;
 }

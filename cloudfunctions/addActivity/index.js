@@ -1,17 +1,40 @@
 const cloud = require('wx-server-sdk')
 
-cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV })
+cloud.init({
+  env: cloud.DYNAMIC_CURRENT_ENV
+})
 
 // 云函数入口函数
 const db = cloud.database()
-exports.main = async (event, context) => {
+exports.main = async(event, context) => {
   try {
-     let res= await db.collection('activity').where({name:event.title}).get()//.then(res=>
-     if(res.data.length>0)
-     return null;
-      else
-        return db.collection('activity').add({ data: { name: event.title, state: 0,date:db.serverDate(),fid:event.fid||[],dep_id:event.dep_id||0} })
+    let type = 0;
+    let res = await db.collection('activity').where({
+      name: event.title
+    }).get();
+    if (res.data.length > 0)
+      return null;
+    else {
+      let res1 = await db.collection('admin').where({
+        user_id: event.user_id
+      }).get();
+      if (res1.data.length > 0&&event.sf==0)
+        type = 1;
+      return db.collection('activity').add({
+        data: {
+          name: event.title,
+          state: event.state,
+          user_id: event.user_id,
+          type: type,
+          pdate: db.serverDate(),
+          fdate: '',
+          bz: event.bz,
+          fid: event.fid || [],
+          dep_id: event.dep_id
+        }
+      })
+    }
   } catch (e) {
-    console.error(e)
+    return e
   }
 }

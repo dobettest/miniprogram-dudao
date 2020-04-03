@@ -7,7 +7,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentIndex: 0, //结果状态
     err: '',
     resultList: '',
     userInfo: {},
@@ -17,18 +16,12 @@ Page({
     tasklist: '',
     tabs: [{
       title: '待批准',
+      state:0,
       isActive: true
     },
     {
       title: '已批准',
-      isActive: false
-    },
-    {
-      title: '审核中',
-      isActive: false
-    },
-    {
-      title: '已完成',
+      state:1,
       isActive: false
     }
     ]
@@ -39,8 +32,7 @@ Page({
    */
   onLoad: function (options) {
     let {
-      resultList,
-      currentIndex
+      resultList
     } = this.data
     let userInfo = wx.getStorageSync("userinfo");
     this.setData({
@@ -49,7 +41,6 @@ Page({
     })
     this.data.userInfo = userInfo
     this.getResult()
-
   },
 
   /**
@@ -91,16 +82,11 @@ Page({
   },
   handleItemChange(e) {
     let {
-      resultList,
-      tasklist,
-      currentIndex,
-      tabs,
-      err
+      tabs
     } = this.data
     const {
       index
     } = e.detail;
-    currentIndex = index
     this.setData({
       resultList: [],
       currentPage: 0,
@@ -110,39 +96,39 @@ Page({
       v.isActive = i == index ? true : false
     })
     this.setData({
-      tabs,
-      currentIndex
+      tabs
     })
     this.getResult();
   },
   async getResult() {
     let that = this;
     let {
-      tasklist,
       resultList,
-      currentIndex,
       currentPage,
       allSelect,
-      userInfo
+      userInfo,
+      tabs
     } = this.data;
-    await cloudFunc('queryActivity', userInfo.sf > 0 ? {
-      data: {
-        state: currentIndex
-      },
-      num: currentPage * 7,
-      limit: 7
-    } : {
-        data: {
-          dep_id: userInfo.dep_id,
-          state: currentIndex
-        },
-        num: currentPage * 7,
-        limit: 7
+    let data={}
+    if(userInfo.sf==1 && userInfo.dep_id==0)
+    data={
+      type:1,
+      state:tabs[tabs.findIndex(v=>v.isActive==true)].state
+    }
+    else
+    data={
+      state:tabs[tabs.findIndex(v=>v.isActive==true)].state,
+    }
+    console.log(data)
+    await cloudFunc('queryActivity',{
+        data,
+        num: currentPage * 8,
+        limit: 8
       }).then(result => {
         result.data.forEach(v => v.isSelect = allSelect);
         this.setData({
           resultList: [...resultList, ...result.data],
-          totalPage: Math.ceil(result.totalnum.total / 7),
+          totalPage: Math.ceil(result.totalnum.total / 8),
         })
         if (result.data.length == 0 && currentPage == 0) {
           allSelect = false
@@ -155,6 +141,7 @@ Page({
             allSelect
           })
         }
+        console.log(result)
         wx.stopPullDownRefresh()
       }).catch(error => {
         let err = {

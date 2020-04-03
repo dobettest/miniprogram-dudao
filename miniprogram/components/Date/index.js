@@ -70,13 +70,15 @@ Component({
       this.setData({weekBar})
     },
     isLeapYear(year) {
-      if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+      if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0){
         return true;
+      }
+      
       return false;
     },
     getMonthLength(year, month) {
       var length;
-      length = this.isLeapYear(year) && month == 2 ? 28 : 29
+      length = this.isLeapYear(year) && month == 2 ? 29 : 28
       var arr1 = [1, 3, 5, 7, 8, 10, 12];
       arr1.some(v => v == month) ? length = 31 : '';
       var arr2 = [4, 6, 9, 11];

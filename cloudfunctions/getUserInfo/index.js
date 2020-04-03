@@ -6,10 +6,10 @@ cloud.init({
 const db = cloud.database()
 exports.main = async (event, context) => {
   try {
-    return await db.collection("users").where({
-      user_id:event.user_id,
-      password:event.password,
-      sf:event.sf
+    let {userInfo,database}=event
+    return await db.collection(database).where({
+      user_id:userInfo.user_id,
+      password:userInfo.password
     }).get()
   } catch (e) {
      console.error(e)

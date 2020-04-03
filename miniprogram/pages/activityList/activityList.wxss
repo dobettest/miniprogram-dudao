@@ -30,6 +30,9 @@
 .result_list .list_item .result_info_detail .item_id text {
   color: red;
 }
+.result_list .list_item .result_info_detail .item_date {
+  word-break: break-all;
+}
 .result_list .list_item .result_info_detail .item_date text {
   color: red;
 }

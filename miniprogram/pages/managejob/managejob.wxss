@@ -34,6 +34,11 @@
 }
 .task_list .list_item .task_info_wrap .item_id {
   color: red;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
 }
 .task_list .list_item .task_info_wrap .item_date {
   color: #666;

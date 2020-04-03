@@ -10,7 +10,7 @@
         <view class="task_info_wrap" bindtap="handleDetail">
           <view class="item_name">{{item.name}}</view>
           <view class="item_id">任务号:{{item._id}}</view>
-          <view class="item_date">发布日期:{{item.date}}</view>
+          <view class="item_date">发布日期:{{item.pdate}}</view>
         </view>
       </view>
     </view>
@@ -20,11 +20,11 @@
           <checkbox checked="{{allSelect}}">全选</checkbox>
         </checkbox-group>
       </view>
-      <view class="del_oper" bindtap="updateTask" data-state="{{state[currentIndex]}}" data-op='0'>
-        否决
+      <view class="del_oper" bindtap="updateTask" data-op='-1'>
+          <i class="iconfont iconchushaixuanxiang1"></i>
       </view>
-      <view class="pass_oper" bindtap="updateTask" data-state="{{state[currentIndex]}}" data-op='1'>
-       通过
+      <view class="pass_oper" bindtap="updateTask"data-op='1'>
+          <i class="iconfont iconzhengque"></i>
       </view>
     </view>
   <view class="err" wx:if="{{err.img_src}}">

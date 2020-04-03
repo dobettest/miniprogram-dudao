@@ -3,6 +3,7 @@ page {
 }
 input,
 textarea {
+  font-size: 24rpx;
   width: 100%;
   border: 5rpx solid #ccc;
 }
@@ -26,10 +27,28 @@ textarea {
   vertical-align: middle;
   margin-right: 10rpx;
 }
+.file_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.file_item text {
+  flex: 8;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  font-size: 24rpx;
+  color: gray;
+}
 .file_item i {
   color: red;
   float: right;
 }
 .file_item:nth-child(odd) {
   background-color: #ccc;
+}
+picker {
+  height: 90rpx;
 }

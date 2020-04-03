@@ -3,7 +3,7 @@ export const chooseFile=()=>{
         wx.chooseMessageFile({
               type:"file",
               count:3,
-              extension:['txt','docx','doc','xlsx'],
+              extension:['txt','docx','doc','xlsx','DOCX','pdf','ppt','png','jpeg'],
             success: res => {
               // output: res.result === 3
               resolve(res.tempFiles);

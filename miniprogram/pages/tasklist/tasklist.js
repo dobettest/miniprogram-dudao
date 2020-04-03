@@ -15,23 +15,32 @@ Page({
     currentPage: 0,
     allSelect: true,
     tasklist: '',
-    tabs: [{
-      title: '待批准',
-      isActive: true
-    },
-    {
-      title: '已批准',
-      isActive: false
-    },
-    {
-      title: '审核中',
-      isActive: false
-    },
-    {
-      title: '已完成',
-      isActive: false
-    }
-    ]
+    tabs: [
+      {
+         title: '被催办',
+         state:-2,
+         isActive: true,
+       },
+       {
+         title: '待批准',
+         state:0,
+         isActive:false,
+       },
+       {
+        title: '已批准',
+        state:1,
+        isActive:false,
+      },
+       {
+         title: '待审核',
+         state:2,
+         isActive: false,
+       },{
+        title: '已完成',
+        state:3,
+        isActive:false,
+      },
+     ]
   },
 
   /**
@@ -91,16 +100,11 @@ Page({
   },
   handleItemChange(e) {
     let {
-      resultList,
-      tasklist,
-      currentIndex,
-      tabs,
-      err
+      tabs
     } = this.data
     const {
       index
     } = e.detail;
-    currentIndex = index
     this.setData({
       resultList: [],
       currentPage: 0,
@@ -110,34 +114,39 @@ Page({
       v.isActive = i == index ? true : false
     })
     this.setData({
-      tabs,
-      currentIndex
+      tabs
     })
     this.getResult();
   },
   async getResult() {
     let that = this;
     let {
-      tasklist,
       resultList,
-      currentIndex,
       currentPage,
       allSelect,
-      userInfo
+      userInfo,
+      tabs
     } = this.data;
-    await cloudFunc('queryTask', userInfo.sf > 0 ?
-      {
-        data: {
-          dep_id: userInfo.dep_id,
-          state: currentIndex
-        },
-        num: currentPage * 7,
-        limit: 7
-      } : {
-        data: {
-          user_id: userInfo.user_id,
-          state: currentIndex
-        },
+    let data={}
+    if(userInfo.sf==1 && userInfo.dep_id==0)
+    data={
+      type:1,
+      state:tabs[tabs.findIndex(v=>v.isActive==true)].state
+    }
+    else if(userInfo.sf==0)
+    data={
+      user_id:userInfo.user_id,
+      state:tabs[tabs.findIndex(v=>v.isActive==true)].state,
+    }
+    else
+    data={
+      dep_id:userInfo.dep_id,
+      state:tabs[tabs.findIndex(v=>v.isActive==true)].state,
+      type:0
+    }
+    console.log(data)
+    await cloudFunc('queryTask',{
+        data,
         num: currentPage * 7,
         limit: 7
       }).then(result => {

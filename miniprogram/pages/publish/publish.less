@@ -7,6 +7,7 @@ page {
 }
 input,
 textarea {
+  font-size: 24rpx;
   width: 100%;
   border: 5rpx solid #ccc;
 }
@@ -33,6 +34,19 @@ textarea {
   }
 }
 .file_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text{
+    flex:8;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp:1;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    font-size: 24rpx;
+    color:gray;
+  }
   i {
     color: red;
     float: right;
@@ -40,4 +54,7 @@ textarea {
 }
 .file_item:nth-child(odd) {
   background-color: #ccc;
+}
+picker{
+  height: 90rpx;
 }

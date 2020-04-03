@@ -12,6 +12,7 @@
     "pages/richeng/index",
     "pages/set_detail/set_detail",
     "pages/managejob/managejob",
+    "pages/manageac/manageac",
     "pages/publish/publish",
     "pages/activityList/activityList",
     "pages/MyCharts/MyCharts",

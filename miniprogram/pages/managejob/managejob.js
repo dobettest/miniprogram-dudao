@@ -7,20 +7,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentIndex: 0,
     err: {},
     resultList: [],
     userInfo: {},
     totalPage: '',
     currentPage: 0,
     allSelect: true,
-    state: [0, 2],
-    tabs: [{
-        title: '待批准',
+    tabs: [
+     {
+        title: '待催办',
+        state:-3,
         isActive: true,
       },
       {
+        title: '待批准',
+        state:0,
+        isActive:false,
+      },
+      {
         title: '待审核',
+        state:2,
         isActive: false,
       }
     ]
@@ -82,13 +88,11 @@ Page({
   },
   handleItemChange(e) {
     let {
-      currentIndex,
-      tabs,
+      tabs
     } = this.data
     const {
       index
     } = e.detail;
-    currentIndex = index
     this.setData({
       resultList: [],
       currentPage: 0,
@@ -98,8 +102,7 @@ Page({
       v.isActive = i == index ? true : false
     })
     this.setData({
-      tabs,
-      currentIndex
+      tabs
     })
     this.getResult();
   },
@@ -107,20 +110,25 @@ Page({
     let that = this;
     let {
       resultList,
-      currentIndex,
       currentPage,
       allSelect,
-      state,
       userInfo,
+      tabs
     } = this.data;
+    let data= userInfo.dep_id>0?{
+        dep_id:userInfo.dep_id,
+        state:tabs[tabs.findIndex(v=>v.isActive==true)].state,
+        type:0
+    }:{
+      state:tabs[tabs.findIndex(v=>v.isActive==true)].state,
+      type:1
+  }
     let result = await cloudFunc('queryTask', {
-      data: {
-        state: state[currentIndex],
-        dep_id: userInfo.dep_id
-      },
+      data,
       num: currentPage * 6,
       limit: 6
     })
+    console.log(result)
     result.data.forEach(v => v.isSelect = allSelect)
     resultList = [...resultList, ...result.data]
     this.setData({
@@ -147,19 +155,19 @@ Page({
   },
   updateTask(e) {
     let {
-      resultList
+      resultList,
+      tabs
     } = this.data;
     let {
-      state,
       op
     } = e.currentTarget.dataset;
-    op == '0' ? state-- : state++;
     let arr = resultList.filter(v => v.isSelect) || [];
     let pr = [];
+    console.log(op)
     arr.forEach(v => {
       pr.push(cloudFunc('updateTask', {
         _id: v._id,
-        state
+        state:tabs[tabs.findIndex(v=>v.isActive==true)].state+parseInt(op)
       }))
     });
     this.setData({
@@ -174,10 +182,8 @@ Page({
     })
   },
   onPullDownRefresh: function() {
-    this.setData({
-      resultList: [],
-      currentPage: 0
-    })
+    this.data.resultList=[]
+    this.data.currentPage=0
     this.getResult()
   },
   /**

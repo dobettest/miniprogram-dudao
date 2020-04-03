@@ -1,5 +1,5 @@
 import {
-  cloudFunc, uploadFile
+  cloudFunc, uploadFile, removeFile
 } from "../../utils/Func"
 import { chooseFile } from "../../utils/chooseFile";
 Page({
@@ -9,12 +9,10 @@ Page({
    */
   data: {
     type: '',
-    btn: ["反馈", "提交审核", "发布活动"],
-    title: ["详情", "备注", "备注"],
+    btn: ["申办活动", "提交审核", "发布活动","提交反馈"],
+    msg:['活动','任务','活动','问题'],
     tempFiles: [],
     userInfo: [],
-    relativeArr: [],
-    tempinput: ''
   },
   /**
    * 生命周期函数--监听页面加载
@@ -33,62 +31,80 @@ Page({
       title: this.data.btn[type],
     })
   },
-  publish(e) {
+publish(e) {
     console.log(e)
-    let { type } = e.detail.target.dataset;
     let { title, bz } = e.detail.value
-    let { tempFiles, userInfo } = this.data
-    if (title == '')
+    let { tempFiles, userInfo,type} = this.data
+    if (title == '' || bz == '')
       wx.showToast({
-        title: '名字不能为空',
+        title: '必填项不能为空',
       })
     else {
-      let pr = [];
+      let pr= [];
+      let fid=[]
+      let dir=type == 1 ? 'task' : 'activity';
       tempFiles.forEach(v => {
-        let cloudPath = userInfo.department + "/activity/" + title + "/" + v.name;
+        let cloudPath =dir+ "/" + title + "/" + v.name;
         let filePath = v.path;
         pr.push(uploadFile(cloudPath, filePath))
       })
-      switch (type) {
-        case '1':
-          Promise.all(pr).then(res => {
-            console.log(res)
-            let fid = []
-            res.forEach(v => {
-              fid.push(v.fileID)
-            });
-            cloudFunc("updateTask", { title, fid, dep_id: userInfo.dep_id }).then(result => {
-              if (result == null)
+      Promise.all(pr).then(res => {
+        console.log(res)
+        res.forEach(v => {
+          fid.push(v.fileID)
+        })
+        switch (type) {
+          case '0':
+            cloudFunc("addActivity", { title, fid, dep_id: userInfo.dep_id, state: 0, user_id:userInfo.user_id,sf:userInfo.sf}).then(res=>{
+              if (res == null){
                 wx.showToast({
-                  title: '任务已存在',
+                  title: '活动已存在',
                   icon: 'none'
                 })
+                removeFile({fileList:fid})
+              }
               else {
                 wx.showToast({
-                  title: '任务发布成功',
+                  title: '活动申请提交成功',
                 })
                 wx.navigateBack({
                   delta: 1
                 });
               }
+            })
+            break;
+          case '1':
+            console.log(title)
+            cloudFunc("updateTask", { title, fid,state:2}).then(result => {
+              if (result == null){
+                wx.showToast({
+                  title: '任务不存在或不符合审核提交',
+                  icon: 'none'
+                })
+                removeFile({fid})
+              }
+              else {
+                wx.showToast({
+                  title: '提交审核成功',
+                })
+                wx.navigateBack({
+                  delta: 1
+                });
+              }
+              console.log(result)
             }).catch(err => {
               console.log(err)
             })
-          }).catch(err => { console.log(err) })
-          break;
-        case '2':
-          Promise.all(pr).then(res => {
-            console.log(res)
-            let fid = []
-            res.forEach(v => {
-              fid.push(v.fileID)
-            });
-            cloudFunc("addActivity", { title, fid, dep_id: userInfo.dep_id }).then(result => {
-              if (result == null)
+            break;
+          case '2':
+            cloudFunc("addActivity", { title, fid, dep_id: userInfo.dep_id, state: 1, user_id:userInfo.user_id}).then(result => {
+              if (result == null){
                 wx.showToast({
                   title: '活动已存在',
                   icon: 'none'
                 })
+                removeFile({fileList:fid})
+              }
               else {
                 wx.showToast({
                   title: '活动发布成功',
@@ -100,11 +116,31 @@ Page({
             }).catch(err => {
               console.log(err)
             })
-          }).catch(err => { console.log(err) })
-          break;
-
-
-      }
+            break;
+            case '3':
+              cloudFunc("addActivity", { title, fid, dep_id: userInfo.dep_id, state: 1, user_id:userInfo.user_id}).then(result => {
+                if (result == null){
+                  wx.showToast({
+                    title: '反馈已存在',
+                    icon: 'none'
+                  })
+                  removeFile({fileList:fid})
+                }
+                else {
+                  wx.showToast({
+                    title: '反馈成功',
+                  })
+                  wx.navigateBack({
+                    delta: 1
+                  });
+                }
+              }).catch(err => {
+                console.log(err)
+              })
+              break;
+        }  
+      }).catch(err => { console.log(err)
+      removeFile({fileList:fid}) });
     }
   },
   async addFiles() {

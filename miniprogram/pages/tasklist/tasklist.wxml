@@ -8,7 +8,7 @@
             <text>任务号</text>:{{item._id}}
           </view>
           <view class="item_date">
-            <text>发布日期</text>:{{item.date}}
+            <text>发布日期</text>:{{item.pdate}}
           </view>
         </view>
       </view>

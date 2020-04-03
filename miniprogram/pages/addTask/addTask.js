@@ -7,32 +7,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    type: '',
-    btn: ["申请任务", "分配任务"],
-    title: ["详情", "备注"],
-    userInfo: []
+    userInfo:{},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let userInfo = wx.getStorageSync("userinfo") || [];
-    let {
-      type
-    } = options;
-    this.setData({
-      type
-    })
+    let userInfo = wx.getStorageSync("userinfo") || {};
     wx.setNavigationBarTitle({
-      title: this.data.btn[type],
+      title:userInfo.sf>0?"分派任务":"申请任务",
     })
-    this.data.userInfo = userInfo
+    this.setData({
+      userInfo
+    })
   },
   publish(e) {
     console.log(e)
-    let { type } = e.detail.target.dataset;
-    type = parseInt(type)
     let { title, bz, uid } = e.detail.value
     let { userInfo } = this.data
     uid = uid == '' ? userInfo.user_id : uid
@@ -43,7 +34,7 @@ Page({
         title: '必填项不能为空',
       })
     else
-      cloudFunc("addTask", { title, state: type, uid, bz, dep_id }).then(result => {
+      cloudFunc("addTask", { title, state:userInfo.sf>0?1:0,user_id:uid, bz, dep_id }).then(result => {
         if (result == null)
           wx.showToast({
             title: '任务已存在',

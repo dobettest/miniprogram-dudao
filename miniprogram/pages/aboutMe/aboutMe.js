@@ -69,7 +69,7 @@ Page({
   },
   fk() {
     wx.navigateTo({
-      url: '../publish/publish?type=0',
+      url: '../publish/publish?type=3',
     });
 
   },
@@ -89,9 +89,14 @@ Page({
     let userInfo = e.detail.value;
     console.log(userInfo)
     console.log(e)
-    userInfo.sf = parseInt(userInfo.sf)
-    const result = await cloudFunc("getUserInfo", userInfo);
-    console.log(e)
+    let result={}
+    switch(userInfo.sf){
+      case '0':
+        result = await cloudFunc("getUserInfo", {database:"users",userInfo})||{};
+        break;
+      case '1':
+        result = await cloudFunc("getUserInfo", {database:"admin",userInfo})||{};
+    }
     console.log(result)
     if (result.data.length > 0) {
       let userInfo = result.data[0]

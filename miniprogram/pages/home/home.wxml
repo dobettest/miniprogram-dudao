@@ -1,40 +1,68 @@
-<searchInput></searchInput>
+<searchInput/>
 <view class="index_banner">
-  <swiper interval="3000" indicator-dots="true" autoplay>
-    <block wx:for="{{banner}}" wx:key="this">
-      <swiper-item>
-        <image src="{{item}}" mode="widthFix" />
-      </swiper-item>
-    </block>
-  </swiper>
+	<swiper interval="3000" indicator-dots="true" autoplay>
+		<block wx:for="{{banner}}" wx:key="this">
+			<swiper-item>
+				<image src="{{item}}" mode="widthFix" lazy-load="true" />
+			</swiper-item>
+		</block>
+	</swiper>
 </view>
 <view class="nav">
-  <view class="nav_item" wx:for="{{userInfo.sf?nav:nav1}}" wx:key="this">
-    <navigator url="{{item.src}}{{item.data}}">
-      <i class="iconfont {{item.icf}}"></i>
-      <view>{{item.txt}}</view>
-    </navigator>
-  </view>
+	<swiper indicator-dots="{{true}}">
+		<block
+		 wx:for="{{userInfo.sf==1?nav:nav1}}"
+		 wx:for-index="index1"
+		 wx:for-item="item1"
+		 wx:key="group"
+		>
+			<swiper-item>
+				<view
+				 class="nav_item"
+				 wx:for="{{item1}}"
+				 wx:for-item="item2"
+				 wx:for-index="index2"
+				 wx:key="this"
+				>
+					<navigator url="{{item2.src}}{{item2.data}}">
+						<i class="iconfont {{item2.icf}}" />
+						<view>{{item2.txt}}</view>
+					</navigator>
+				</view>
+			</swiper-item>
+		</block>
+	</swiper>
 </view>
 <view class="notations">
-  <image src="../../images/notation.png" style="margin-left:{{left}}rpx" />
-  <text>已更新{{num}}条通知</text>
+	<image src="../../images/notation.png" style="margin-left:{{left}}rpx" />
+	<text>已更新{{num}}条通知</text>
 </view>
-<view class="title"><span class="title_name">群星闪耀</span><span class="more">查看更多<i class="iconfont icongengduo"></i></span></view>
+<view class="title">
+	<span class="title_name">群星闪耀</span>
+	<span class="more">查看更多
+		<i class="iconfont icongengduo" />
+	</span>
+</view>
 <view class="honorBar">
-  <block wx:for="{{honorList}}" wx:key="this">
-    <view class="honor_item">
-      <view class="honor_title">{{item.type}}</view>
-      <image src="{{item.img_src?item.img_src:'../../images/none-data.png'}}"></image>
-      <view class="honor_name">{{item.name}}</view>
-    </view>
-  </block>
+	<block wx:for="{{honorList}}" wx:key="this">
+		<view class="honor_item">
+			<view class="honor_title">{{item.type}}</view>
+			<image src="{{item.img_src?item.img_src:'../../images/none-data.png'}}" />
+			<view class="honor_name">{{item.name}}</view>
+		</view>
+	</block>
 </view>
-<view class="title"><span class="title_name">校园新闻</span><span class="more">查看更多<i class="iconfont icongengduo"></i></span></view>
+<view class="title">
+	<span class="title_name">校园新闻</span>
+	<span class="more">查看更多
+		<i class="iconfont icongengduo" />
+	</span>
+</view>
 <view class="news">
-  <view class="news_item" wx:for="{{newsList}}" wx:key="this">
-    <i class="iconfont icongengduo"></i>
-    <view class="news_title">{{item.biaoti}}</view>
-    <view class="news_time">{{item.time}}</view>
-  </view>
+	<view class="news_item" wx:for="{{newsList}}" wx:key="this">
+		<i class="iconfont icongengduo" />
+		<view class="news_title">{{item.biaoti}}</view>
+		<view class="news_time">{{item.time}}</view>
+	</view>
 </view>
+

@@ -6,12 +6,12 @@
 		<view class="user_info_wrap">
 			<view class="user_info_detail">
 				<view class="user_id_name">
-					<view>{{userInfo.name?userInfo.name:'张三'}}</view>
-					<view>{{userInfo.user_id?userInfo.user_id:'000000000000'}}</view>
+					<view>{{userInfo.name}}</view>
+					<view>{{userInfo.user_id}}</view>
 				</view>
 				<view class="user_dep_job">
-					<view>部门:{{userInfo.department?userInfo.department:'软件学院'}}</view>
-					<view>职位:{{userInfo.job?userInfo.job:'游客'}}</view>
+					<view>部门:{{userInfo.department}}</view>
+					<view>职位:{{userInfo.job}}</view>
 				</view>
 			</view>
 				<view class="sign_text">

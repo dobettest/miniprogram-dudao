@@ -38,6 +38,10 @@ Component({
     ec: {
       type: Object
     },
+    options:{
+      type:Object,
+      value:{}
+    },
 
     forceUseOldCanvas: {
       type: Boolean,
@@ -93,6 +97,7 @@ Component({
     },
 
     initByOldWay(callback) {
+      console.log("old")
       // 1.9.91 <= version < 2.9.0：原来的方式初始化
       ctx = wx.createCanvasContext(this.data.canvasId, this);
       const canvas = new WxCanvas(ctx, this.data.canvasId, false);
@@ -122,21 +127,20 @@ Component({
     },
 
     initByNewWay(callback) {
+      console.log("new")
       // version >= 2.9.0：使用新的方式初始化
       const query = wx.createSelectorQuery().in(this)
       query
         .select('.ec-canvas')
-        .fields({ node: true, size: true })
-        .exec(res => {
+        .fields({ node: true, size: true,dataset:true})
+        .exec(res=>{
           const canvasNode = res[0].node
           this.canvasNode = canvasNode
-
+          console.log(res[0])
           const canvasDpr = wx.getSystemInfoSync().pixelRatio
           const canvasWidth = res[0].width
           const canvasHeight = res[0].height
-          console.log(res[0])
           const ctx = canvasNode.getContext('2d')
-
           const canvas = new WxCanvas(ctx, this.data.canvasId, true, canvasNode)
           echarts.setCanvasCreator(() => {
             return canvas
@@ -154,8 +158,7 @@ Component({
               dpr: canvasDpr
             })
           }
-        })
-    },
+        })},
     canvasToTempFilePath(opt) {
       if (this.data.isUseNewCanvas) {
         // 新版
