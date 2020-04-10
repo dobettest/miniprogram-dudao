@@ -1,5 +1,5 @@
 import {
-  cloudFunc, uploadFile, removeFile
+  cloudFunc, uploadFile, removeFile, formatTime
 } from "../../utils/Func"
 import { chooseFile } from "../../utils/chooseFile";
 Page({
@@ -48,6 +48,7 @@ publish(e) {
         let filePath = v.path;
         pr.push(uploadFile(cloudPath, filePath))
       })
+      let pdate=formatTime(new Date())
       Promise.all(pr).then(res => {
         console.log(res)
         res.forEach(v => {
@@ -55,7 +56,7 @@ publish(e) {
         })
         switch (type) {
           case '0':
-            cloudFunc("addActivity", { title, fid, dep_id: userInfo.dep_id, state: 0, user_id:userInfo.user_id,sf:userInfo.sf}).then(res=>{
+            cloudFunc("addActivity", { title, fid,bz, dep_id: userInfo.dep_id, state: 0, user_id:userInfo.user_id,sf:userInfo.sf,pdate}).then(res=>{
               if (res == null){
                 wx.showToast({
                   title: '活动已存在',
@@ -67,9 +68,11 @@ publish(e) {
                 wx.showToast({
                   title: '活动申请提交成功',
                 })
-                wx.navigateBack({
-                  delta: 1
-                });
+                setTimeout(function(){
+                  wx.navigateBack({
+                    delta: 1
+                  });
+                },2000)
               }
             })
             break;
@@ -87,9 +90,11 @@ publish(e) {
                 wx.showToast({
                   title: '提交审核成功',
                 })
-                wx.navigateBack({
-                  delta: 1
-                });
+                setTimeout(function(){
+                  wx.navigateBack({
+                    delta: 1
+                  });
+                },2000)
               }
               console.log(result)
             }).catch(err => {
@@ -97,7 +102,7 @@ publish(e) {
             })
             break;
           case '2':
-            cloudFunc("addActivity", { title, fid, dep_id: userInfo.dep_id, state: 1, user_id:userInfo.user_id}).then(result => {
+            cloudFunc("addActivity", { title, fid,bz,dep_id: userInfo.dep_id, state: 1, user_id:userInfo.user_id,pdate}).then(result => {
               if (result == null){
                 wx.showToast({
                   title: '活动已存在',
@@ -109,9 +114,11 @@ publish(e) {
                 wx.showToast({
                   title: '活动发布成功',
                 })
-                wx.navigateBack({
-                  delta: 1
-                });
+                setTimeout(function(){
+                  wx.navigateBack({
+                    delta: 1
+                  });
+                },2000)
               }
             }).catch(err => {
               console.log(err)
@@ -130,9 +137,11 @@ publish(e) {
                   wx.showToast({
                     title: '反馈成功',
                   })
-                  wx.navigateBack({
-                    delta: 1
-                  });
+                  setTimeout(function(){
+                    wx.navigateBack({
+                      delta: 1
+                    });
+                  },2000)
                 }
               }).catch(err => {
                 console.log(err)

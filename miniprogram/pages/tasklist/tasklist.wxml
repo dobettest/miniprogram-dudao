@@ -1,21 +1,9 @@
+<import is="resultList" src="../../templates/resultList" />
+<import is="err" src="../../templates/error" />
 <searchInput></searchInput>
 <tab tabs="{{tabs}}" bindhandleItemChange="handleItemChange"></tab>
-<view class="result_list">
-    <view class="list_item" wx:for="{{resultList}}" wx:key="fid">
-        <view class="item_name" bindtap="setClipboardData" data-name="{{item.name}}">{{item.name}}</view>
-        <view class="result_info_detail" bindtap="handleDetail">
-          <view class="item_id">
-            <text>任务号</text>:{{item._id}}
-          </view>
-          <view class="item_date">
-            <text>发布日期</text>:{{item.pdate}}
-          </view>
-        </view>
-      </view>
-  </view>
-  <view class="err" wx:if="{{err.img_src}}">
-    <view class="img_wrap">
-      <image src="{{err.img_src}}" />
-    </view>
-    <view class="title_wrap">{{err.title}}</view>
-  </view>
+<template is="resultList" data="{{resultList}}" wx:if="{{resultList[0].pdate}}">
+</template>
+<template is="err" data="{{err}}" wx:if="{{err.err_msg}}">
+  
+</template>

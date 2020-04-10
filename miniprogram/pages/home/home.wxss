@@ -67,12 +67,18 @@ page{
   middle-align:vertical;
 }
 .title_name{
-  font-size:30rpx;
+  font-size:40rpx;
+  font-weight:600;
   color:red;
 }
 .more{
-  text-align:center;
+  font-size:32rpx;
   float:right;
+}
+.more i{
+  margin-left:-20rpx;
+  font-size:32rpx;
+  vertical-align:baseline;
 }
 .honor_item{
   width: 23%;
@@ -85,7 +91,7 @@ page{
   border: 1rpx solid #000;
   height: 240rpx;
 }
-.news_item{
+/* .news_item{
   background-color:white;
   display: flex;
   align-items: center;
@@ -103,4 +109,4 @@ page{
 .news_item i{
   vertical-align: middle;
   font-size: 32rpx;
-}
+} */

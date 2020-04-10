@@ -1,0 +1,15 @@
+<view class="comment_bar">
+	<view class="tool">
+		<input type="text" placeholder="欢迎发表你的观点" bindinput="setcontent" value="{{content}}"/>
+		<i class="iconfont iconpinglun" bindtap="comment" />
+		<i class="iconfont iconshoucang" />
+	</view>
+    <view class="comment_item" wx:for="{{comment}}" wx:key="this">
+   <image src="../../images/logo.png" mode="widthFix" />
+   <view class="right">
+    <view class="name_num"><view class="name">{{item.user_id}}</view><view class="num">{{item.num}}<i class="iconfont iconzanpress {{item.zan?'active':''}}" bindtap="zan" data-id="{{_id}}" data-index="{{index}}"></i></view></view>
+    <view class="content">{{item.content}}</view>
+    <view class="date_reply">{{item.pdate}}.<text class="reply">回复</text></view>
+    </view>
+    </view>
+</view>

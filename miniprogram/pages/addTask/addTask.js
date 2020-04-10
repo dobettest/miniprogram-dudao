@@ -1,5 +1,5 @@
 import {
-  cloudFunc
+  cloudFunc, formatTime
 } from "../../utils/Func.js"
 Page({
 
@@ -26,15 +26,17 @@ Page({
     console.log(e)
     let { title, bz, uid } = e.detail.value
     let { userInfo } = this.data
-    uid = uid == '' ? userInfo.user_id : uid
-    let dep_id = userInfo.dep_id
+    let {sf,dep_id,user_id}=userInfo
+    uid =sf>0?uid:user_id
     console.log(uid)
     if (title == '' || bz == '' || uid == '')
       wx.showToast({
         title: '必填项不能为空',
       })
-    else
-      cloudFunc("addTask", { title, state:userInfo.sf>0?1:0,user_id:uid, bz, dep_id }).then(result => {
+    else{
+      let pdate=formatTime(new Date())
+      cloudFunc("addTask", { title, state:sf>0?1:0,user_id:uid, bz, dep_id,pdate,sf}).then(result => {
+        console.log(result)
         if (result == null)
           wx.showToast({
             title: '任务已存在',
@@ -44,10 +46,14 @@ Page({
           wx.showToast({
             title: '任务添加成功',
           })
-          wx.navigateBack({
-            delta: 1
-          });
+          setTimeout(function(){
+            wx.navigateBack({
+              delta: 1
+            });
+          },2000)
+         
         }
       })
   }
+}
 })

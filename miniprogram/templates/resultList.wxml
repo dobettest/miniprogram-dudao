@@ -1,0 +1,15 @@
+<template name="resultList">
+<view class="result_list">
+    <view class="list_item" wx:for="{{resultList}}" wx:key="fid" bindtap="handleDetail">
+        <view class="item_name">{{item.name}}</view>
+        <view class="result_info_detail">
+          <view class="item_id">
+            <text>活动号</text>:{{item._id}}
+          </view>
+          <view class="item_date">
+            <text>发布日期</text>:{{item.pdate}}
+          </view>
+        </view>
+      </view>
+</view>
+</template>

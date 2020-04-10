@@ -1,4 +1,0 @@
-<view class="error">
-    <view><image src="{{item.img_src}}" /></view>
-    <view>{{item.title}}</view>
-</view>

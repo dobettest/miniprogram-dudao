@@ -59,7 +59,7 @@ export const removeFile = (fileList) => {
   console.log(fileList)
   return new Promise((resolve, reject) => {
     wx.cloud.deleteFile({
-      fileList:fileList.fid,
+      fileList: fileList.fid,
       success: res => {
         resolve(res)
       },
@@ -86,22 +86,44 @@ export const showToast = (title) => {
     })
   })
 }
-export const request =params => {
-  const BaseUrl="https://www.dobettest.cn:8000"
+export const request = params => {
+  wx.showLoading({
+    title: '加载中',
+    mask: true,
+  });
+  const BaseUrl = "https://www.dobettest.cn:8000"
   return new Promise((resolve, reject) => {
     wx.request({
-      url:BaseUrl+params.url,
-      data:params.data,
-      header: {'content-type':'application/json'},
+      url: BaseUrl + params.url,
+      data: params.data,
+      header: { 'content-type': 'application/json' },
       method: 'GET',
       dataType: 'json',
       responseType: 'text',
-      success: (result)=>{
+      success: (result) => {
         resolve(result)
       },
-      fail: (err)=>{
+      fail: (err) => {
         reject(err)
       },
+      complete: () => {
+        wx - wx.hideLoading()
+      }
     });
   })
+}
+export const formatTime = date => {
+  const formatNumber = n => {
+    n = n.toString()
+    return n[1] ? n : '0' + n
+  }
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+
 }

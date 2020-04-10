@@ -1,0 +1,29 @@
+@import "../../style/iconfont";
+.navBar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  padding-bottom: env(safe-area-inset-bottom);
+  border-top: 1px solid gray;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.navBar .item {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.navBar .item i {
+  font-size: 60rpx;
+  color: gray;
+}
+.active {
+  color: green;
+}
+.active i {
+  color: green !important;
+}

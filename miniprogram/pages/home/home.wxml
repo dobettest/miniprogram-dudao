@@ -1,3 +1,4 @@
+<import is="newsList" src="../../templates/newsList" />
 <searchInput/>
 <view class="index_banner">
 	<swiper interval="3000" indicator-dots="true" autoplay>
@@ -9,7 +10,7 @@
 	</swiper>
 </view>
 <view class="nav">
-	<swiper indicator-dots="{{true}}">
+	<swiper indicator-dots="{{true}}" indicator-active-color="{{themeColor}}">
 		<block
 		 wx:for="{{userInfo.sf==1?nav:nav1}}"
 		 wx:for-index="index1"
@@ -25,7 +26,7 @@
 				 wx:key="this"
 				>
 					<navigator url="{{item2.src}}{{item2.data}}">
-						<i class="iconfont {{item2.icf}}" />
+						<i class="iconfont {{item2.icf}}" style="color:{{themeColor}}"/>
 						<view>{{item2.txt}}</view>
 					</navigator>
 				</view>
@@ -54,15 +55,11 @@
 </view>
 <view class="title">
 	<span class="title_name">校园新闻</span>
-	<span class="more">查看更多
+	<span class="more" bindtap="moreNews">查看更多
 		<i class="iconfont icongengduo" />
 	</span>
 </view>
-<view class="news">
-	<view class="news_item" wx:for="{{newsList}}" wx:key="this">
-		<i class="iconfont icongengduo" />
-		<view class="news_title">{{item.biaoti}}</view>
-		<view class="news_time">{{item.time}}</view>
-	</view>
-</view>
+<template is="newsList" data="{{newsList}}">
+	
+</template>
 

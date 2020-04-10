@@ -1,0 +1,14 @@
+<template name="newsList">
+<view class="news">
+	<view class="news_item" wx:for="{{newsList}}" wx:key="this" bindtap="getNews" data-href="{{item.href}}" data-biaoti="{{item.biaoti}}">
+		<i class="iconfont icongengduo" />
+		<view class="news_title">{{item.biaoti}}</view>
+		<view class="news_time">{{item.time}}</view>
+	</view>
+	<view class="pageBar">
+	<view class="pre">上一页</view>
+	<view class="next active">下一页</view>
+	<view class="directto">跳转到</view>
+	</view>
+</view>
+</template>

@@ -1,0 +1,12 @@
+<import is="news_item" src="../../templates/newsDetail" />
+<import is="resultList" src="../../templates/resultList" />
+<import is="err" src="../../templates/error" />
+<import is="newsList" src="../../templates/newsList" />
+<template is="news_item" data="{{news}}" wx:if="{{news._id}}">  
+</template>
+<template is="newsList" data="{{newsList}}" wx:if="{{newsList[0].biaoti}}">  
+</template>
+<template is="resultList" data="{{resultList}}" wx:if="{{resultList[0].pdate}}">  
+</template>
+<template is="err" data="{{err}}" wx:if="{{err.err_msg}}">
+</template>

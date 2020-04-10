@@ -1,0 +1,8 @@
+<template name="err">
+<view class="err">
+    <image src="../../images/error.png"></image>
+    <view class="err_msg">
+        <text>{{err.err_msg}}</text>
+    </view>
+</view>
+</template>

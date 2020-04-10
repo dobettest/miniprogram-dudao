@@ -1,0 +1,18 @@
+<form bindsubmit="publish">
+<view class="callBack_title">
+<view>任务名:</view>
+<input type="text" name="title" placeholder="请输入任务名"/>
+</view>
+<view class="callBack_content_title">
+<view>备注:</view>
+<textarea name="bz" id="" cols="30" rows="10">
+</textarea>
+</view>
+<view>
+指派编号:
+<input type="text" name="uid" />
+</view>
+<view class="callBack_btn">
+<button type="primary" data-type="{{type}}" formType="submit">催办任务</button>
+</view>
+</form>

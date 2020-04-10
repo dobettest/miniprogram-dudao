@@ -3,10 +3,8 @@
     "pages/home/home",
     "pages/addTask/addTask",
     "pages/tasklist/tasklist",
-    "pages/result/result",
     "pages/task_detail/task_detail",
     "pages/aboutMe/aboutMe",
-    "pages/error/error",
     "pages/set/set",
     "pages/about/about",
     "pages/richeng/index",
@@ -19,7 +17,10 @@
     "pages/OnlineMeeting/OnlineMeeting",
     "pages/room/room",
     "pages/meeting/meeting",
-    "pages/videocall/videocall"
+    "pages/videocall/videocall",
+    "pages/test/test",
+    "pages/detail/detail",
+    "pages/alarmtask/alarmtask"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

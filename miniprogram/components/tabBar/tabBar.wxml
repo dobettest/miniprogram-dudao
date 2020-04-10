@@ -1,0 +1,7 @@
+<slot></slot>
+<view class="navBar">
+    <view class="item" wx:for="{{navList}}" wx:key="this" bindtap="change" data-index="{{index}}">
+    <i class="iconfont {{item.icf}}"   style="color:{{item.Selected?themeColor:''}}"></i>
+    <text style="color:{{item.Selected?themeColor:''}}">{{item.text}}</text>
+    </view>
+</view>

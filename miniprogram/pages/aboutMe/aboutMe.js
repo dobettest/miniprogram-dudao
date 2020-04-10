@@ -53,6 +53,11 @@ Page({
       func: 'sz'
     }
     ],
+      remind: '加载中',
+      help_status: false,
+      userid_focus: false,
+      passwd_focus: false,
+      angle:0
 
   },
 
@@ -66,6 +71,15 @@ Page({
       num: userInfo.dj
     })
     console.log(userInfo)
+  },
+  onReady:function(){
+    let userInfo = wx.getStorageSync(("userinfo")) || {};
+    this.setData({
+      userInfo,
+      num: userInfo.dj||0
+    })
+    if(!userInfo._id)
+    this.loginfrm()
   },
   fk() {
     wx.navigateTo({
@@ -85,6 +99,7 @@ Page({
     });
 
   },
+  
   async login(e) {
     let userInfo = e.detail.value;
     console.log(userInfo)
@@ -121,6 +136,24 @@ Page({
     wx.setNavigationBarTitle({
       title: '登录',
     });
+    this.loginfrm()
+  },
+  loginfrm(){
+    setTimeout(()=>{
+      this.setData({
+        remind: ''
+      });
+    }, 1000);
+    wx.onAccelerometerChange(res=>{
+      var angle = -(res.x*30).toFixed(1);
+      if(angle>14){ angle=14; }
+      else if(angle<-14){ angle=-14; }
+      if(this.data.angle !== angle){
+        this.setData({
+          angle: angle
+        });
+      }
+    });
   },
   async changeHeader() {
     let { userInfo } = this.data;
@@ -141,5 +174,42 @@ Page({
     wx.navigateTo({
       url: '../about/about'
   })
+  },
+  inputFocus: function(e){
+    if(e.target.id == 'userid'){
+      this.setData({
+        'userid_focus': true
+      });
+    }else if(e.target.id == 'passwd'){
+      this.setData({
+        'passwd_focus': true
+      });
+    }
+  },
+  inputBlur: function(e){
+    if(e.target.id == 'userid'){
+      this.setData({
+        'userid_focus': false
+      });
+    }else if(e.target.id == 'passwd'){
+      this.setData({
+        'passwd_focus': false
+      });
+    }
+  },
+  tapHelp: function(e){
+    if(e.target.id == 'help'){
+      this.hideHelp();
+    }
+  },
+  showHelp: function(e){
+    this.setData({
+      'help_status': true
+    });
+  },
+  hideHelp: function(e){
+    this.setData({
+      'help_status': false
+    });
   }
 })

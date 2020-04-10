@@ -1,0 +1,4 @@
+{
+  "usingComponents": {"tabBar":"../../components/tabBar/tabBar",
+  "comment":"../../components/comment/comment"}
+}

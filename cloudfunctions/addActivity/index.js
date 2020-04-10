@@ -26,7 +26,7 @@ exports.main = async(event, context) => {
           state: event.state,
           user_id: event.user_id,
           type: type,
-          pdate: db.serverDate(),
+          pdate:event.pdate,
           fdate: '',
           bz: event.bz,
           fid: event.fid || [],

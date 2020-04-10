@@ -8,7 +8,7 @@ Page({
    */
   data: {
     currentIndex: 0, //结果状态
-    err: '',
+    err:{},
     resultList: '',
     userInfo: {},
     totalPage: '',
@@ -157,22 +157,19 @@ Page({
         })
         if (result.data.length == 0 && currentPage == 0) {
           allSelect = false
-          let err = {
-            img_src: '../../images/error.png',
-            title: "没有找到结果"
-          }
-          that.setData({
-            err,
+          this.setData({
+            err:{
+              err_msg:"没有找到结果"
+            },
             allSelect
           })
         }
         wx.stopPullDownRefresh()
       }).catch(error => {
         let err = {
-          img_src: '../../images/error.png',
-          title: "访问出错了"
+          err_msg: "访问出错了"
         }
-        that.setData({
+        this.setData({
           err
         })
         console.log(error)

@@ -1,0 +1,71 @@
+/* components/comment/comment.wxss */
+@import"../../style/iconfont";
+.comment_bar {
+    .tool{
+        height: 90rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input {
+        flex:7;
+        height: 100%;
+        border: 1px solid #ccc;
+  
+    }
+    i{
+        padding: 10rpx;
+        font-size:60rpx;
+    }
+    }
+    .comment_item {
+        display: flex;
+        align-items: center;
+        border-bottom: 0.5rpx solid #ccc;
+        color:gray;
+        image {
+            border: 1px solid green;
+            border-radius: 50%;
+            width: 90rpx;
+      
+        }
+      
+        .right {
+        flex:8;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+          .name_num {
+              display: flex;
+              width: 100%;
+            .name {
+                padding: 20rpx;
+                flex:6;
+                color:gold;
+            }
+      
+            .num {
+              i{
+                  padding: 10rpx;
+                  font-size: 60rpx;
+              }
+            }
+          }
+      
+          .content {
+              color:black;
+              font-weight: 600;            
+      
+          }
+          .date_reply {
+            .reply {
+                color:black;
+      
+            }
+          }
+        }
+      }
+    
+  }
+  .active{
+      color:red;
+  }

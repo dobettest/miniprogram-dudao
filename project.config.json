@@ -26,7 +26,7 @@
 		"bundle": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.3",
+	"libVersion": "2.10.4",
 	"appid": "wx263ab2caabbcafe5",
 	"projectname": "%E4%BA%91%E7%9D%A3%E7%B3%BB%E7%BB%9F",
 	"miniprogramRoot": "miniprogram/",
@@ -108,8 +108,8 @@
 				},
 				{
 					"id": 6,
-					"name": "pages/richeng/index",
-					"pathName": "pages/richeng/index",
+					"name": "pages/test/test",
+					"pathName": "pages/test/test",
 					"query": "",
 					"scene": null
 				},
